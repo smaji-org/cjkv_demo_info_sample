@@ -85,7 +85,7 @@ def filter_src(path):
 
 opts= setup_opt()
 
-src_files= glob.glob(os.path.join(opts.cjkv_info, "*", "*.src"))
+src_files= glob.glob(os.path.join(opts.cjkv_info, "data", "*", "*.src"))
 src_files= filter(filter_src, src_files)
 
 newfont= fontforge.font()

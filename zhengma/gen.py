@@ -101,7 +101,7 @@ def get_zhengma(src_file: str) -> List[str]:
 
 opts= setup_opt()
 
-src_files= glob.glob(os.path.join(opts.cjkv_info, "*", "*.src"))
+src_files= glob.glob(os.path.join(opts.cjkv_info, "data", "*", "*.src"))
 src_files= filter(filter_src, src_files)
 
 with open(os.path.join(opts.output_dir, "zhengma.dict.yaml"), "w") as output_file:
