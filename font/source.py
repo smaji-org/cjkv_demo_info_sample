@@ -1,7 +1,7 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 # -*- coding:utf-8 -*-
 
-info= {
+info: dict[str, dict[str, str]]= {
     "China": {
         "G0": "GB 2312-80",
         "G1": "GB 12345-90",
@@ -123,7 +123,7 @@ info= {
     }
 }
 
-rev= {}
+rev: dict[str, str]= {}
 
 for region in info:
     for sub in info[region]:

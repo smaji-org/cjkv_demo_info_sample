@@ -1,5 +1,7 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 # -*- coding:utf-8 -*-
+
+from typing import Optional
 
 import os
 import argparse
@@ -37,7 +39,7 @@ class Opts:
         self.adjust= 0
         self.output= (".", "out.ttf")
 
-def setup_opt():
+def setup_opt()-> Opts:
     opts= Opts()
     args= opt_parser.parse_args()
     opts.cjkv_info= args.cjkv_info or opts.cjkv_info
@@ -56,25 +58,25 @@ def setup_opt():
         pass
     return opts
 
-def get_code(path):
+def get_code(path: str)-> int:
     basename= os.path.basename(path)
-    (root, ext)= os.path.splitext(basename)
+    (root, _)= os.path.splitext(basename)
     code_tag= root.split("_")
     code= int(code_tag[0], 16)
     return code
 
-def read_src(path):
+def read_src(path: str)-> str:
     with open(path, "r") as f:
         src= f.readline()
         return src
 
-def get_region(src):
+def get_region(src: str) -> Optional[str]:
     return source.rev.get(src.split("-")[0])
 
-def is_region(region):
+def is_region(region: Optional[str])-> bool:
     return region == opts.region
 
-def filter_src(path):
+def filter_src(path: str)-> bool:
     code= get_code(path)
     if opts.start <= code and code <= opts.end:
         src= read_src(path)
